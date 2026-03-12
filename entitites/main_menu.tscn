@@ -1,0 +1,259 @@
+[gd_scene load_steps=25 format=3 uid="uid://b23ugregv32ak"]
+
+[ext_resource type="Theme" uid="uid://dw2ytd2gehmf5" path="res://assets/main_menu.tres" id="1_pw3kg"]
+[ext_resource type="Texture2D" uid="uid://dk1qsts5mkx0o" path="res://assets/bird.png" id="2_eoawi"]
+[ext_resource type="Script" uid="uid://cp56vyj0mt6qu" path="res://entitites/main_menu.gd" id="2_pw3kg"]
+[ext_resource type="Texture2D" uid="uid://do402vbqlmwj" path="res://assets/star.png" id="2_rfn6a"]
+[ext_resource type="Texture2D" uid="uid://7dukt363x3v7" path="res://assets/blue.png" id="3_rfn6a"]
+[ext_resource type="Texture2D" uid="uid://t7gxvdxw6xw5" path="res://assets/pink.png" id="4_pw3kg"]
+[ext_resource type="Texture2D" uid="uid://f8g3l0i2atrt" path="res://assets/portal.png" id="5_kxtd7"]
+[ext_resource type="Texture2D" uid="uid://c6n2jfvr238u2" path="res://assets/clock.png" id="6_rfn6a"]
+
+[sub_resource type="Gradient" id="Gradient_pw3kg"]
+offsets = PackedFloat32Array(0, 0.263636, 0.7, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pw3kg"]
+gradient = SubResource("Gradient_pw3kg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxtd7"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(160, 90, 1)
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_pw3kg")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw3kg"]
+atlas = ExtResource("4_pw3kg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxtd7"]
+atlas = ExtResource("4_pw3kg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb38u"]
+atlas = ExtResource("4_pw3kg")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jn6v"]
+atlas = ExtResource("4_pw3kg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7kbv"]
+atlas = ExtResource("4_pw3kg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r15x0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw3kg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxtd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb38u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jn6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7kbv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc512"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(0, 0, 24, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0wjy"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(24, 0, 24, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7le2"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(48, 0, 24, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjwg8"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(0, 40, 24, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7alxl"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(24, 40, 24, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucldv"]
+atlas = ExtResource("5_kxtd7")
+region = Rect2(48, 40, 24, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jb38u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gc512")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0wjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7le2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjwg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7alxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucldv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pw3kg")
+script = ExtResource("2_pw3kg")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39, 0.39, 0.39, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.321569)
+position = Vector2(151, 118)
+amount = 3
+texture = ExtResource("2_rfn6a")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_kxtd7")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.513726)
+position = Vector2(151, 118)
+amount = 3
+texture = ExtResource("2_rfn6a")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_kxtd7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.637
+anchor_top = 0.261
+anchor_right = 0.981
+anchor_bottom = 0.739
+offset_left = 0.159988
+offset_top = 0.0200005
+offset_right = 0.0799866
+offset_bottom = -0.0200043
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="Depart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Depart"
+
+[node name="IDK" type="Node2D" parent="."]
+position = Vector2(24, 27)
+scale = Vector2(1.3, 1.3)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="IDK"]
+position = Vector2(36.9231, 46.9231)
+sprite_frames = SubResource("SpriteFrames_r15x0")
+frame_progress = 0.341054
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="IDK"]
+position = Vector2(84.6154, 46.1538)
+scale = Vector2(0.769231, 0.769231)
+sprite_frames = SubResource("SpriteFrames_jb38u")
+autoplay = "default"
+frame_progress = 0.823598
+
+[node name="Node2D" type="Node2D" parent="IDK"]
+position = Vector2(10.7692, 69.2308)
+
+[node name="Sprite2D" type="Sprite2D" parent="IDK/Node2D"]
+modulate = Color(0.56, 0.56, 0.56, 1)
+texture = ExtResource("3_rfn6a")
+hframes = 2
+vframes = 2
+
+[node name="Clock" type="Sprite2D" parent="IDK/Node2D"]
+position = Vector2(-0.5, 2.5)
+texture = ExtResource("6_rfn6a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="IDK"]
+position = Vector2(39.2308, 56.9231)
+texture = ExtResource("2_eoawi")
+hframes = 2
+vframes = 2
+
+[node name="ColorRect2" type="ColorRect" parent="IDK"]
+offset_left = -4.0
+offset_top = 78.0
+offset_right = 100.0
+offset_bottom = 102.0
+color = Color(0.14, 0.14, 0.14, 1)
+
+[node name="ColorRect" type="ColorRect" parent="IDK"]
+offset_left = -2.0
+offset_top = 80.0
+offset_right = 98.0
+offset_bottom = 100.0
+color = Color(0.28, 0.28, 0.28, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.231
+anchor_top = 0.056
+anchor_right = 0.822
+anchor_bottom = 0.178
+offset_left = 0.0800018
+offset_top = -0.0799999
+offset_right = -0.0400085
+offset_bottom = -0.0400009
+theme_override_font_sizes/font_size = 20
+text = "Linked Worlds"

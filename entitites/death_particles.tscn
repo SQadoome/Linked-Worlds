@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxhxpuuyoyiy8"]
+
+[ext_resource type="Script" uid="uid://bkqfu4ke0fhtl" path="res://entitites/death_particles.gd" id="2_t5sci"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 23
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 65)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+scale_amount_max = 2.0
+script = ExtResource("2_t5sci")

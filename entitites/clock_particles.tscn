@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://s08ljuu62jgw"]
+
+[ext_resource type="Script" uid="uid://duyyavcp27gx3" path="res://entitites/clock_particles.gd" id="1_2bi02"]
+
+[sub_resource type="Gradient" id="Gradient_xafcg"]
+colors = PackedColorArray(0.22, 0.22, 0.22, 1, 0.63, 0.63, 0.63, 1)
+
+[node name="ClockParticles" type="Node2D"]
+script = ExtResource("1_2bi02")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 23
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 65)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xafcg")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

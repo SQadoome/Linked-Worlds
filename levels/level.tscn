@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnwrb8kyh2x35"]
+
+[ext_resource type="PackedScene" uid="uid://b7ulylrf2u4tx" path="res://entitites/portal.tscn" id="2_gjl0y"]
+[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/pink_player.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/blue_player.tscn" id="4_d5x7l"]
+[ext_resource type="PackedScene" uid="uid://ohhyu8i7btkr" path="res://entitites/block.tscn" id="5_rtcij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mrsh"]
+size = Vector2(417, 59.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_safpt"]
+size = Vector2(60, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjl0y"]
+size = Vector2(29.5, 163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnv7o"]
+size = Vector2(29.5, 165)
+
+[node name="Level" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(16, 2)
+
+[node name="ColorRect" type="ColorRect" parent="Ground"]
+offset_left = -125.0
+offset_top = 159.0
+offset_right = 477.0
+offset_bottom = 199.0
+mouse_filter = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(177, 199)
+shape = SubResource("RectangleShape2D_5mrsh")
+
+[node name="Ground2" type="StaticBody2D" parent="."]
+position = Vector2(16, 2)
+
+[node name="ColorRect" type="ColorRect" parent="Ground2"]
+offset_left = 261.0
+offset_top = 127.0
+offset_right = 427.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2"]
+position = Vector2(337, 154)
+shape = SubResource("RectangleShape2D_safpt")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Walls"]
+offset_left = -25.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 163.0
+mouse_filter = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Walls"]
+offset_left = 316.0
+offset_top = -5.0
+offset_right = 351.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-5.5, 79)
+shape = SubResource("RectangleShape2D_gjl0y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(330, 80)
+shape = SubResource("RectangleShape2D_vnv7o")
+
+[node name="Portal" parent="." instance=ExtResource("2_gjl0y")]
+position = Vector2(299, 100)
+
+[node name="Player1Stuff" type="Node2D" parent="."]
+
+[node name="PinkPlayer" parent="Player1Stuff" instance=ExtResource("3_vnv7o")]
+position = Vector2(114, 153)
+
+[node name="Player2Stuff" type="Node2D" parent="."]
+
+[node name="BluePlayer" parent="Player2Stuff" instance=ExtResource("4_d5x7l")]
+position = Vector2(156, 153)
+
+[node name="Block" parent="Player2Stuff" instance=ExtResource("5_rtcij")]
+position = Vector2(269, 287)

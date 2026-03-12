@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://66d8kirynmsq"]
+
+[ext_resource type="Script" uid="uid://cyuyvjke1r1hf" path="res://entitites/player.gd" id="1_ljlx0"]
+[ext_resource type="PackedScene" uid="uid://c6fos6b14e4gr" path="res://entitites/freezable.tscn" id="2_ljlx0"]
+[ext_resource type="AudioStream" uid="uid://deirp1145uwag" path="res://assets/jump.mp3" id="3_g7bor"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fen15"]
+load_path = "res://.godot/imported/pink.png-0e118c0a13c625367f41793402bc0186.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljlx0"]
+radius = 5.5
+height = 13.0
+
+[sub_resource type="Animation" id="Animation_ty3vg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_aywko"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0bxjc"]
+_data = {
+&"RESET": SubResource("Animation_ty3vg"),
+&"idle": SubResource("Animation_aywko")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_ljlx0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_fen15")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("CapsuleShape2D_ljlx0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0bxjc")
+}
+autoplay = "idle"
+
+[node name="Freezable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_ljlx0")]
+actor = NodePath("../Sprite2D")
+
+[node name="RunParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-5, 7)
+rotation = -2.35619
+emitting = false
+amount = 23
+lifetime = 0.25
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+linear_accel_min = -20.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g7bor")
+volume_db = -5.0
+pitch_scale = 1.5

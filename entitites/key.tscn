@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnh8x8prttewu"]
+
+[ext_resource type="Texture2D" uid="uid://g2jf617d7gow" path="res://assets/key.png" id="1_3quax"]
+[ext_resource type="Script" uid="uid://bronymoi53m2j" path="res://entitites/key.gd" id="1_vcmlc"]
+[ext_resource type="AudioStream" uid="uid://cpukro88m4g88" path="res://assets/explosion.wav" id="3_gb56y"]
+[ext_resource type="AudioStream" uid="uid://cbc7k7b67w6ec" path="res://assets/key_pickup.wav" id="4_166oo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcmlc"]
+size = Vector2(10, 20)
+
+[sub_resource type="Animation" id="Animation_166oo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gb56y"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.9, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, -5), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fwwrh"]
+_data = {
+&"RESET": SubResource("Animation_166oo"),
+&"idle": SubResource("Animation_gb56y")
+}
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_vcmlc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vcmlc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, -1)
+texture = ExtResource("1_3quax")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fwwrh")
+}
+autoplay = "idle"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gb56y")
+
+[node name="KeyPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_166oo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

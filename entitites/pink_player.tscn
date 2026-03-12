@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://djhouq5p6ropw"]
+
+[ext_resource type="PackedScene" uid="uid://66d8kirynmsq" path="res://entitites/player.tscn" id="1_1koov"]
+[ext_resource type="Script" uid="uid://ca2sh1jhdvt3m" path="res://entitites/pink_player.gd" id="2_tqgg6"]
+[ext_resource type="Texture2D" uid="uid://t7gxvdxw6xw5" path="res://assets/pink.png" id="2_xqp4c"]
+[ext_resource type="AudioStream" uid="uid://di8sssyrmrsja" path="res://assets/whistle.wav" id="4_tqgg6"]
+[ext_resource type="Texture2D" uid="uid://u7x212f53a43" path="res://assets/whsitle.png" id="5_aywko"]
+
+[sub_resource type="Gradient" id="Gradient_xqp4c"]
+colors = PackedColorArray(1, 0.419608, 0.592157, 1, 1, 0.741176, 0.819608, 1)
+
+[node name="PinkPlayer" instance=ExtResource("1_1koov")]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("2_tqgg6")
+type = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xqp4c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D" index="0"]
+visible = false
+position = Vector2(8, 0)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("5_aywko")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite2D" index="1"]
+position = Vector2(10, -2)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 30.0
+scale_amount_min = 1.3
+scale_amount_max = 1.3
+
+[node name="RunParticles" parent="." index="4"]
+color_ramp = SubResource("Gradient_xqp4c")
+
+[node name="Whistle" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("4_tqgg6")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[node name="Timer" type="Timer" parent="." index="7"]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

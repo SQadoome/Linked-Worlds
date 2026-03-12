@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://rls8mg82prsr"]
+
+[ext_resource type="PackedScene" uid="uid://66d8kirynmsq" path="res://entitites/player.tscn" id="1_1jk2y"]
+[ext_resource type="Script" uid="uid://b4vagfqgaabxc" path="res://entitites/blue_player.gd" id="2_3567w"]
+[ext_resource type="Texture2D" uid="uid://7dukt363x3v7" path="res://assets/blue.png" id="2_xb4ue"]
+[ext_resource type="Gradient" uid="uid://bri6rtgm5rkmf" path="res://assets/blue_grad.tres" id="4_k2pnh"]
+
+[node name="BluePlayer" instance=ExtResource("1_1jk2y")]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("2_3567w")
+type = 2
+
+[node name="Hand" type="Node2D" parent="." index="0"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Hand" index="0"]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 8.0
+offset_bottom = 5.0
+color = Color(0.1349, 0.1349, 0.71, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Hand" index="1"]
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 11.0
+offset_bottom = 3.0
+rotation = 1.57079
+color = Color(0.1349, 0.1349, 0.71, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Hand" index="2"]
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 9.0
+offset_bottom = 2.0
+rotation = 3.14159
+color = Color(0.1349, 0.1349, 0.71, 1)
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_xb4ue")
+
+[node name="Freezable" parent="." index="4"]
+position = Vector2(-0.5, 2)
+
+[node name="RunParticles" parent="." index="5"]
+color_ramp = ExtResource("4_k2pnh")

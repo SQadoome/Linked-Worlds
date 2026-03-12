@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1u6imaxnmlkh"]
+
+[ext_resource type="Script" uid="uid://dn7maov0x2ond" path="res://entitites/scene_handler.gd" id="1_0clld"]
+[ext_resource type="PackedScene" uid="uid://b23ugregv32ak" path="res://entitites/main_menu.tscn" id="1_4edrr"]
+[ext_resource type="PackedScene" uid="uid://dt3somyl0kppt" path="res://entitites/level_selector.tscn" id="3_nk6dv"]
+
+[node name="SceneHandler" type="Node2D" node_paths=PackedStringArray("MN", "lvl_sl")]
+script = ExtResource("1_0clld")
+MN = NodePath("CanvasLayer/MainMenu")
+lvl_sl = NodePath("CanvasLayer/LevelSelector")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_4edrr")]
+
+[node name="LevelSelector" parent="CanvasLayer" instance=ExtResource("3_nk6dv")]
+visible = false

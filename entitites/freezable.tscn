@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fos6b14e4gr"]
+
+[ext_resource type="Script" uid="uid://c3xnmnaekirji" path="res://entitites/freezable.gd" id="1_gymcw"]
+[ext_resource type="Texture2D" uid="uid://c6n2jfvr238u2" path="res://assets/clock.png" id="2_ml5um"]
+
+[node name="Freezable" type="Node2D"]
+script = ExtResource("1_gymcw")
+
+[node name="Clock" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_ml5um")

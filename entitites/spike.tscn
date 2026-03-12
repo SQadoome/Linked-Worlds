@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lsw0qhp5wyik"]
+
+[ext_resource type="Script" uid="uid://cxnieu0jt64rg" path="res://entitites/spike.gd" id="1_sqhwy"]
+[ext_resource type="AudioStream" uid="uid://dpfeplfygoiil" path="res://assets/bird_die.mp3" id="2_hcqax"]
+
+[node name="Spike" type="Area2D"]
+collision_layer = 0
+collision_mask = 9
+monitorable = false
+script = ExtResource("1_sqhwy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hcqax")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

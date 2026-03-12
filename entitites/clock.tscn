@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://db13pepfvrpoi"]
+
+[ext_resource type="Texture2D" uid="uid://c6n2jfvr238u2" path="res://assets/clock.png" id="1_ic6be"]
+[ext_resource type="Script" uid="uid://do6pwmg04uug6" path="res://entitites/clock.gd" id="1_qc23b"]
+
+[node name="Clock" type="Node2D"]
+script = ExtResource("1_qc23b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_ic6be")

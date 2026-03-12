@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://dncr4attjliew"]
+
+[ext_resource type="Texture2D" uid="uid://dk1qsts5mkx0o" path="res://assets/bird.png" id="1_67ksg"]
+[ext_resource type="Script" uid="uid://ryu40eyade31" path="res://entitites/bird.gd" id="1_bluk3"]
+[ext_resource type="PackedScene" uid="uid://c6fos6b14e4gr" path="res://entitites/freezable.tscn" id="3_me7a3"]
+[ext_resource type="AudioStream" uid="uid://dpfeplfygoiil" path="res://assets/bird_die.mp3" id="4_02ufr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bluk3"]
+size = Vector2(22, 7)
+
+[sub_resource type="Gradient" id="Gradient_bluk3"]
+colors = PackedColorArray(1, 0.419608, 0.592157, 1, 1, 0.67, 0.769, 1)
+
+[sub_resource type="Animation" id="Animation_02ufr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_me7a3"]
+resource_name = "fly"
+length = 1.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvpwc"]
+_data = {
+&"RESET": SubResource("Animation_02ufr"),
+&"fly": SubResource("Animation_me7a3")
+}
+
+[node name="Bird" type="CharacterBody2D"]
+collision_mask = 10
+script = ExtResource("1_bluk3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_67ksg")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_bluk3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 23
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 65)
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+color_ramp = SubResource("Gradient_bluk3")
+
+[node name="Freezable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("3_me7a3")]
+actor = NodePath("../Sprite2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hvpwc")
+}
+autoplay = "fly"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_02ufr")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

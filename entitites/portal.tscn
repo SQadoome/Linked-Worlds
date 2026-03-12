@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7ulylrf2u4tx"]
+
+[ext_resource type="Script" uid="uid://dyxmtgo3lqmtg" path="res://entitites/portal.gd" id="1_157j7"]
+[ext_resource type="Texture2D" uid="uid://cohn37rl21ckh" path="res://assets/portal_shine.png" id="2_6icb4"]
+[ext_resource type="Texture2D" uid="uid://f8g3l0i2atrt" path="res://assets/portal.png" id="2_rogtj"]
+[ext_resource type="Texture2D" uid="uid://7dukt363x3v7" path="res://assets/blue.png" id="4_qj3v8"]
+[ext_resource type="Texture2D" uid="uid://t7gxvdxw6xw5" path="res://assets/pink.png" id="5_c1ipa"]
+[ext_resource type="AudioStream" uid="uid://b65huvuxp2xdf" path="res://assets/portal.wav" id="6_c1ipa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6icb4"]
+radius = 12.0
+height = 38.0
+
+[sub_resource type="Animation" id="Animation_qj3v8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qfno0"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1ipa"]
+_data = {
+&"RESET": SubResource("Animation_qj3v8"),
+&"idle": SubResource("Animation_qfno0")
+}
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_157j7")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 55
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+
+[node name="PortalShine" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+texture = ExtResource("2_6icb4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rogtj")
+hframes = 3
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_6icb4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c1ipa")
+}
+autoplay = "idle"
+
+[node name="Blue" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_qj3v8")
+hframes = 2
+vframes = 2
+
+[node name="Pink" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_c1ipa")
+hframes = 2
+vframes = 2
+
+[node name="AuidoStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_c1ipa")
+volume_db = -5.0
+pitch_scale = 0.9
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
