@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=4 uid="uid://cctuvhgwpbwtc"]
+[gd_scene format=4 uid="uid://cctuvhgwpbwtc"]
 
 [ext_resource type="PackedScene" uid="uid://bnh8x8prttewu" path="res://entitites/key.tscn" id="1_qcb15"]
 [ext_resource type="Script" uid="uid://boxmlkki504h5" path="res://levels/level_4.gd" id="1_x27qk"]
 [ext_resource type="PackedScene" uid="uid://b7ulylrf2u4tx" path="res://entitites/portal.tscn" id="2_nqpck"]
 [ext_resource type="Texture2D" uid="uid://brlvlels6kbna" path="res://assets/sprites.png" id="2_p7y1e"]
-[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/pink_player.tscn" id="3_37tfk"]
+[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/player/pink_player.tscn" id="3_37tfk"]
 [ext_resource type="Texture2D" uid="uid://5pxmhycbbpkd" path="res://assets/lighy.png" id="3_vndwe"]
-[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/blue_player.tscn" id="4_ko3hc"]
+[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/player/blue_player.tscn" id="4_ko3hc"]
 [ext_resource type="PackedScene" uid="uid://ohhyu8i7btkr" path="res://entitites/block.tscn" id="5_8vs55"]
 [ext_resource type="PackedScene" uid="uid://bsp7g7dgil5wt" path="res://entitites/lock.tscn" id="6_jgdqk"]
 

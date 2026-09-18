@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://ch676tsdoe16e"]
+[gd_scene format=4 uid="uid://ch676tsdoe16e"]
 
 [ext_resource type="Texture2D" uid="uid://brlvlels6kbna" path="res://assets/sprites.png" id="1_8l0e1"]
 [ext_resource type="PackedScene" uid="uid://b7ulylrf2u4tx" path="res://entitites/portal.tscn" id="1_bmgug"]
-[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/pink_player.tscn" id="2_20opy"]
+[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/player/pink_player.tscn" id="2_20opy"]
 [ext_resource type="Texture2D" uid="uid://5pxmhycbbpkd" path="res://assets/lighy.png" id="2_lfnxh"]
-[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/blue_player.tscn" id="3_8l0e1"]
+[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/player/blue_player.tscn" id="3_8l0e1"]
 [ext_resource type="PackedScene" uid="uid://ohhyu8i7btkr" path="res://entitites/block.tscn" id="4_lfnxh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ofchu"]

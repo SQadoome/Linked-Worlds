@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb0tlx7gsd6g"]
+[gd_scene format=3 uid="uid://cb0tlx7gsd6g"]
 
 [ext_resource type="Script" uid="uid://dnliolgvl3erw" path="res://core/game_handler.gd" id="1_pqe36"]
 [ext_resource type="Texture2D" uid="uid://do402vbqlmwj" path="res://assets/star.png" id="2_e0k1o"]
@@ -81,12 +81,12 @@ _data = {
 &"disappear": SubResource("Animation_snqni")
 }
 
-[node name="GameHandler" type="Node2D" groups=["GameHandler"]]
+[node name="GameHandler" type="Node2D" unique_id=958857370 groups=["GameHandler"]]
 script = ExtResource("1_pqe36")
 
-[node name="BG" type="CanvasLayer" parent="."]
+[node name="BG" type="CanvasLayer" parent="." unique_id=684913219]
 
-[node name="ColorRect" type="ColorRect" parent="BG"]
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=1694766322]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,23 +95,23 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0.0352941, 1)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="BG"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BG" unique_id=1802943634]
 position = Vector2(161, 42)
 amount = 5
 texture = ExtResource("2_e0k1o")
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_kehfc")
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="BG"]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="BG" unique_id=683172177]
 position = Vector2(161, 42)
 amount = 5
 texture = ExtResource("2_e0k1o")
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_kehfc")
 
-[node name="Main" type="CanvasLayer" parent="."]
+[node name="Main" type="CanvasLayer" parent="." unique_id=2124766522]
 
-[node name="GhostBird" type="Sprite2D" parent="Main" groups=["GhostBird"]]
+[node name="GhostBird" type="Sprite2D" parent="Main" unique_id=71111210 groups=["GhostBird"]]
 visible = false
 modulate = Color(1, 1, 1, 0.384314)
 z_index = 1
@@ -121,17 +121,17 @@ texture = ExtResource("2_ub6uu")
 hframes = 2
 vframes = 2
 
-[node name="GUI" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=469720902]
 process_mode = 3
 
-[node name="Reset" type="Button" parent="GUI"]
+[node name="Reset" type="Button" parent="GUI" unique_id=693906585]
 offset_right = 31.0
 offset_bottom = 20.0
 theme_override_fonts/font = ExtResource("4_pqe36")
 theme_override_font_sizes/font_size = 12
 text = "RESET"
 
-[node name="ColorRect" type="ColorRect" parent="GUI"]
+[node name="ColorRect" type="ColorRect" parent="GUI" unique_id=1757642613]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -140,7 +140,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="GUI"]
+[node name="Label" type="Label" parent="GUI" unique_id=65196529]
 anchors_preset = -1
 anchor_left = 0.456
 anchor_right = 0.484
@@ -152,7 +152,7 @@ theme_override_fonts/font = ExtResource("4_pqe36")
 theme_override_font_sizes/font_size = 8
 text = "1-1"
 
-[node name="Pause" type="Control" parent="GUI"]
+[node name="Pause" type="Control" parent="GUI" unique_id=1226198595]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -162,7 +162,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_snqni")
 
-[node name="ColorRect2" type="ColorRect" parent="GUI/Pause"]
+[node name="ColorRect2" type="ColorRect" parent="GUI/Pause" unique_id=647652433]
 modulate = Color(1, 1, 1, 0.352941)
 layout_mode = 1
 anchors_preset = 15
@@ -172,7 +172,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21, 0.21, 0.21, 1)
 
-[node name="Label2" type="Label" parent="GUI/Pause"]
+[node name="Label2" type="Label" parent="GUI/Pause" unique_id=1603938563]
 modulate = Color(1, 1, 1, 0.623529)
 layout_mode = 0
 offset_left = 63.0
@@ -182,7 +182,7 @@ offset_bottom = 99.0
 theme_override_fonts/font = ExtResource("4_pqe36")
 text = "Press escape again to exit"
 
-[node name="Label3" type="Label" parent="GUI/Pause"]
+[node name="Label3" type="Label" parent="GUI/Pause" unique_id=678754173]
 modulate = Color(1, 1, 1, 0.623529)
 layout_mode = 0
 offset_left = 82.0
@@ -193,14 +193,12 @@ theme_override_fonts/font = ExtResource("4_pqe36")
 theme_override_font_sizes/font_size = 12
 text = "press any button to cancel"
 
-[node name="Freeze" type="AudioStreamPlayer" parent="."]
+[node name="Freeze" type="AudioStreamPlayer" parent="." unique_id=449055231]
 stream = ExtResource("5_ku1mt")
 volume_db = -5.0
 pitch_scale = 0.9
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_e0k1o")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1794428714]
+libraries/ = SubResource("AnimationLibrary_e0k1o")
 
 [connection signal="pressed" from="GUI/Reset" to="." method="_on_reset_pressed"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://66d8kirynmsq"]
+[gd_scene format=3 uid="uid://66d8kirynmsq"]
 
-[ext_resource type="Script" uid="uid://cyuyvjke1r1hf" path="res://entitites/player.gd" id="1_ljlx0"]
+[ext_resource type="Script" uid="uid://cyuyvjke1r1hf" path="res://entitites/player/player.gd" id="1_ljlx0"]
 [ext_resource type="PackedScene" uid="uid://c6fos6b14e4gr" path="res://entitites/freezable.tscn" id="2_ljlx0"]
 [ext_resource type="AudioStream" uid="uid://deirp1145uwag" path="res://assets/jump.mp3" id="3_g7bor"]
 
@@ -50,29 +50,27 @@ _data = {
 &"idle": SubResource("Animation_aywko")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1650470093]
 collision_mask = 5
 script = ExtResource("1_ljlx0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1605085346]
 texture = SubResource("CompressedTexture2D_fen15")
 hframes = 2
 vframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1933806857]
 position = Vector2(-0.5, 1.5)
 shape = SubResource("CapsuleShape2D_ljlx0")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0bxjc")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1677813317]
+libraries/ = SubResource("AnimationLibrary_0bxjc")
+autoplay = &"idle"
 
-[node name="Freezable" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("2_ljlx0")]
+[node name="Freezable" parent="." unique_id=563336751 node_paths=PackedStringArray("actor") instance=ExtResource("2_ljlx0")]
 actor = NodePath("../Sprite2D")
 
-[node name="RunParticles" type="CPUParticles2D" parent="."]
+[node name="RunParticles" type="CPUParticles2D" parent="." unique_id=1497678879]
 position = Vector2(-5, 7)
 rotation = -2.35619
 emitting = false
@@ -83,7 +81,7 @@ initial_velocity_min = 10.0
 initial_velocity_max = 30.0
 linear_accel_min = -20.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1304853286]
 stream = ExtResource("3_g7bor")
 volume_db = -5.0
 pitch_scale = 1.5

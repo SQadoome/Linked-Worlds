@@ -22,34 +22,25 @@ func player_ascended() -> void:
 		
 		load_level(level_index + 1)
 
+var unfrozen_index: int = 0
 func time_stop(play_sound: bool = true) -> void:
 	if play_sound:
 		$Freeze.pitch_scale = randf_range(0.9, 1.1)
 		$Freeze.play()
 	
-	if already_stopped == 0:
-		# pink
-		already_stopped = 1
+	for i:int in level.player_managers.size():
+		if (i == (unfrozen_index + 1) % level.player_managers.size()):
+			level.player_managers[i].unfreeze();
+		else:
+			level.player_managers[i].freeze();
 		
-		for i in level.get_node("Player1Stuff").get_children():
-			i.freeze()
-		
-		for i in level.get_node("Player2Stuff").get_children():
-			i.unfreeze()
-		
-	else:
-		# blue
-		already_stopped = 0
-		
-		for i in level.get_node("Player2Stuff").get_children():
-			i.freeze()
-		
-		for i in level.get_node("Player1Stuff").get_children():
-			i.unfreeze()
-		
+	
+	unfrozen_index = (unfrozen_index + 1) % level.player_managers.size();
+	
 
 func add_bird(bird: Bird) -> void:
 	level.get_node("Player1Stuff").add_child(bird)
+	pass
 
 const level_1: PackedScene = preload("res://levels/level_1.tscn")
 const level_2: PackedScene = preload("res://levels/level_2.tscn")
@@ -65,7 +56,7 @@ const level_11: PackedScene = preload("res://levels/level_11.tscn")
 const level_12: PackedScene = preload("res://levels/level_12.tscn")
 const level_13: PackedScene = preload("res://levels/level_13.tscn")
 
-var level: Node2D
+var level: GameLevel
 var level_index: int = 1
 var level_data: Dictionary[int, PackedScene] = {
 	1: level_1,

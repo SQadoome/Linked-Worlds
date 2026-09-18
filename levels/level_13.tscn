@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b7i5k86ciq7jy"]
+[gd_scene format=3 uid="uid://b7i5k86ciq7jy"]
 
 [ext_resource type="Script" uid="uid://b6m6q7ofjjsyf" path="res://level_16.gd" id="1_ibaot"]
 [ext_resource type="AudioStream" uid="uid://cnvhldnsqk6pj" path="res://assets/rick_roll.wav" id="2_pxlid"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c6n2jfvr238u2" path="res://assets/clock.png" id="7_pj5p5"]
 [ext_resource type="Texture2D" uid="uid://dk1qsts5mkx0o" path="res://assets/bird.png" id="8_s4cjh"]
 [ext_resource type="PackedScene" uid="uid://b7ulylrf2u4tx" path="res://entitites/portal.tscn" id="10_dr5uc"]
-[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/pink_player.tscn" id="11_pj5p5"]
-[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/blue_player.tscn" id="12_s4cjh"]
+[ext_resource type="PackedScene" uid="uid://djhouq5p6ropw" path="res://entitites/player/pink_player.tscn" id="11_pj5p5"]
+[ext_resource type="PackedScene" uid="uid://rls8mg82prsr" path="res://entitites/player/blue_player.tscn" id="12_s4cjh"]
 [ext_resource type="PackedScene" uid="uid://ohhyu8i7btkr" path="res://entitites/block.tscn" id="13_mekp2"]
 
 [sub_resource type="Gradient" id="Gradient_mekp2"]
